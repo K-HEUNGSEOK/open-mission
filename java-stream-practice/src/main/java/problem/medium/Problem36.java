@@ -1,6 +1,8 @@
 package problem.medium;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Problem36 {
 
@@ -12,7 +14,17 @@ public class Problem36 {
      * @return 연속된 3개의 숫자가 모두 짝수인 첫 번째 부분의 리스트
      */
     public static List<Integer> findFirstTripleEvenSequence(List<Integer> numbers) {
-        // 여기에 코드 작성
-        return null;
+        int limit = Math.max(0, numbers.size()-2);
+        return IntStream.range(0,limit)
+                .filter(i ->
+                        numbers.get(i) % 2 == 0 &&
+                        numbers.get(i+1) % 2 == 0 &&
+                        numbers.get(i+2) % 2 == 0)
+                .findFirst()
+                .stream()
+                .mapToObj(i -> List.of(numbers.get(i), numbers.get(i+1), numbers.get(i+2)))
+                .findFirst()
+                .orElse(Collections.emptyList());
+
     }
 }

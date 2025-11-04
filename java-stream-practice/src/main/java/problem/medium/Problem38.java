@@ -12,7 +12,9 @@ public class Problem38 {
      * @return 'b'로 시작하는 문자열의 평균 길이, 해당 문자열이 없으면 0
      */
     public static double averageLengthOfStringsStartingWithB(List<String> strings) {
-        // 여기에 코드 작성
-        return 0;
+        return strings.stream().filter(s -> s.startsWith("b"))
+                .mapToInt(String::length)
+                .average()
+                .orElse(0);
     }
 }

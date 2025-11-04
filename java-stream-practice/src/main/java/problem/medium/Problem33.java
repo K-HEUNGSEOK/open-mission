@@ -11,7 +11,6 @@ public class Problem33 {
      * @return 'a'로 시작하는 문자열들의 길이의 합
      */
     public static int sumLengthsOfStringsStartingWithA(List<String> strings) {
-        // 여기에 코드 작성
-        return 0;
+       return strings.stream().filter(s -> s.startsWith("a")).mapToInt(String::length).sum();
     }
 }

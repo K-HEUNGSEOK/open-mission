@@ -2,6 +2,7 @@ package problem.medium;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem40 {
 
@@ -13,7 +14,8 @@ public class Problem40 {
      * @return 문자열의 길이를 키로, 해당 길이의 문자열 리스트를 값으로 가지는 Map
      */
     public static Map<Integer, List<String>> groupStringsByLength(List<String> strings) {
-        // 여기에 코드 작성
-        return null;
+       return strings.stream().collect(Collectors.groupingBy(
+                String::length
+        ));
     }
 }

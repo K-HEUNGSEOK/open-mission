@@ -1,5 +1,6 @@
 package problem.medium;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Problem31 {
@@ -12,7 +13,7 @@ public class Problem31 {
      * @return 조건을 만족하는 대문자로 변환된, 정렬된 문자열 리스트
      */
     public static List<String> transformAndSortStrings(List<String> strings) {
-        // 여기에 코드 작성
-        return null;
+       return strings.stream().filter(n -> n.length() >= 3 && n.length() <= 7 && n.contains("e"))
+                .map(String::toUpperCase).sorted().toList();
     }
 }

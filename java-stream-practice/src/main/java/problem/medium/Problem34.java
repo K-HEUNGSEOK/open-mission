@@ -11,7 +11,6 @@ public class Problem34 {
      * @return 리스트의 최대값, 리스트가 비어 있으면 0
      */
     public static int findMaxValue(List<Integer> numbers) {
-        // 여기에 코드 작성
-        return 0;
+        return numbers.stream().mapToInt(Integer::intValue).max().orElse(0);
     }
 }
