@@ -11,7 +11,7 @@ public class Problem9 {
      * @return 변환된 문자열 리스트
      */
     public static List<String> transformStrings(List<String> strings) {
-        // 여기에 코드 작성
-        return null;
+        // 처음엔 filter를 사용했어서 안됐었다. filter는 거름망 역할을 하기 때문에 이런 조건은 map 으로 실시한다.
+        return strings.stream().map(s -> (s.length() >= 3) ? s.toUpperCase() : s).toList();
     }
 }
