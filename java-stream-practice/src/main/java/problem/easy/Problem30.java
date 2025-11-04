@@ -12,6 +12,6 @@ public class Problem30 {
      */
     public static long countEvenNumbers(List<Integer> numbers) {
         // 여기에 코드 작성
-        return 0;
+        return numbers.stream().filter(n -> n % 2 == 0).mapToInt(Integer::intValue).count();
     }
 }

@@ -1,5 +1,6 @@
 package problem.easy;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,8 @@ public class Problem28 {
      */
     public static Optional<String> findLongestString(List<String> strings) {
         // 여기에 코드 작성
-        return Optional.empty();
+        //1. 가장 긴 문자열을 찾는다
+        //2. 그 뒤에 그 문자열을 내보낸다
+        return strings.stream().max(Comparator.comparing(String::length));
     }
 }
