@@ -1,6 +1,7 @@
 package problem.easy;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem14 {
 
@@ -12,6 +13,11 @@ public class Problem14 {
      */
     public static Map<String, String> filterKeys(Map<String, String> map) {
         // 여기에 코드 작성
-        return null;
+        return map.keySet().stream().filter(key -> key.length() >= 3).collect(
+                Collectors.toMap(
+                        key -> key,
+                        value -> map.get(value)
+                )
+        );
     }
 }
