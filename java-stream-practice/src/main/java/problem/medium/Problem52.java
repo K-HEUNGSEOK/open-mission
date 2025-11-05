@@ -12,7 +12,7 @@ public class Problem52 {
      * @return 가격이 20달러 이하인 제품들의 이름 리스트
      */
     public static List<String> getProductNamesUnder20Dollars(List<Product> products) {
-        // 여기에 코드 작성
-        return null;
+        return products.stream().filter(p -> p.getPrice() <= 20)
+                .map(Product::getName).toList();
     }
 }

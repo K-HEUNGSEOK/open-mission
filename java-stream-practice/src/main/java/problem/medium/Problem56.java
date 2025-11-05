@@ -12,7 +12,8 @@ public class Problem56 {
      * @return 'Sales' 부서에 속한 직원들의 이름 리스트
      */
     public static List<String> getNamesOfSalesDepartmentEmployees(List<Employee> employees) {
-        // 여기에 코드 작성
-        return null;
+       return employees.stream()
+                .filter(e -> e.getDepartment().equals("Sales"))
+                .map(Employee::getName).toList();
     }
 }

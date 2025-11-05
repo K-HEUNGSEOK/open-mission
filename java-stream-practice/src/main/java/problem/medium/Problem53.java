@@ -1,6 +1,7 @@
 package problem.medium;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import problem.medium.resources.Customer2;
 
 public class Problem53 {
@@ -12,7 +13,14 @@ public class Problem53 {
      * @return 각 고객별 'Milk' 제품의 총 주문 수량을 나타내는 리스트
      */
     public static List<String> getTotalMilkOrdersForEachCustomer(List<Customer2> customers) {
-        // 여기에 코드 작성
-        return null;
+       return customers.stream()
+                .map(c -> {
+                    int total = c.getOrders().stream()
+                            .filter(n -> n.getProduct().equals("Milk"))
+                            .mapToInt(n -> n.getQuantity())
+                            .sum();
+
+                    return c.getName() + ": " + total;
+                }).toList();
     }
 }

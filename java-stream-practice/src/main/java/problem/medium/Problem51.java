@@ -1,5 +1,6 @@
 package problem.medium;
 
+import java.util.Comparator;
 import java.util.List;
 import problem.medium.resources.Employee;
 
@@ -13,7 +14,8 @@ public class Problem51 {
      * @return 조건을 만족하는 직원들의 이름 리스트
      */
     public static List<String> getNamesOfITDepartmentEmployeesOver30(List<Employee> employees) {
-        // 여기에 코드 작성
-        return null;
+        //sorted 할 때 무엇을 기준으로 할지 알려줘야한다.
+       return employees.stream().filter(employee -> employee.getDepartment() == "IT" && employee.getAge() >= 30)
+                .sorted(Comparator.comparing(Employee::getName)).map(e -> e.getName()).toList();
     }
 }

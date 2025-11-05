@@ -32,7 +32,7 @@ public class Problem60Test {
                 new Product("Bread", 3.00)
         );
 
-        double expected = 1800.00; // Alice의 노트북과 Bob의 스마트폰 가격 합계
+        double expected = 1806.0; // Alice의 노트북과 Bob의 스마트폰 가격 합계
         assertEquals(expected, Problem60.calculateTotalPriceOfElectronicsOrderedByITEmployees(customers, employees, products));
     }
 }

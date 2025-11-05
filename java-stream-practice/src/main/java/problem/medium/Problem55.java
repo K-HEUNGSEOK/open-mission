@@ -1,7 +1,10 @@
 package problem.medium;
 
+import java.util.Comparator;
 import java.util.List;
 import problem.medium.resources.Customer2;
+import problem.medium.resources.Order;
+import problem.medium.resources.Product;
 
 public class Problem55 {
 
@@ -12,8 +15,14 @@ public class Problem55 {
      * @param customers 고객 리스트
      * @return 'Bread' 제품을 가장 많이 주문한 고객의 이름
      */
+    //1. 고객의 가장 큰 값을 찾고 그 값을
     public static String getCustomerWhoOrderedMostBread(List<Customer2> customers) {
-        // 여기에 코드 작성
-        return "";
+       return customers.stream()
+               .max(Comparator.comparing(c -> {
+                  return c.getOrders().stream()
+                           .filter(o -> o.getProduct().equals("Bread"))
+                           .mapToInt(order -> order.getQuantity())
+                           .sum();
+               })).map(Customer2::getName).orElse("");
     }
 }
