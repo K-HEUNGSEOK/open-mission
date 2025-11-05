@@ -10,7 +10,7 @@ public class Problem41Test {
 
     @Test
     public void testCountAndAverageLengthOfStringsStartingWithC() {
-        SimpleEntry<Long, Double> expected = new SimpleEntry<>(2L, 5.5);
+        SimpleEntry<Long, Double> expected = new SimpleEntry<>(2L, 3.0);
         assertEquals(expected, Problem41.countAndAverageLengthOfStringsStartingWithC(Arrays.asList("cat", "car", "apple")));
     }
 }

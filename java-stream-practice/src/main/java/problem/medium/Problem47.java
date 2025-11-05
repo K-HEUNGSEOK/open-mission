@@ -1,6 +1,7 @@
 package problem.medium;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Problem47 {
 
@@ -13,6 +14,9 @@ public class Problem47 {
      */
     public static List<Integer> findIndicesOfStringsStartingWithD(List<String> strings) {
         // 여기에 코드 작성
-        return null;
+       return IntStream.range(0,strings.size())
+                .filter(i -> strings.get(i).startsWith("d"))
+                .boxed()
+                .toList();
     }
 }

@@ -1,6 +1,7 @@
 package problem.medium;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Problem43 {
 
@@ -13,7 +14,9 @@ public class Problem43 {
      * @return 조건을 만족하는 문자열 리스트
      */
     public static List<String> filterStringsByLength(List<String> strings, List<Integer> lengths) {
-        // 여기에 코드 작성
-        return null;
+       return IntStream.range(0,strings.size())
+                .filter(i -> strings.get(i).length() <= lengths.get(i))
+                .mapToObj(i -> strings.get(i))
+                .toList();
     }
 }
