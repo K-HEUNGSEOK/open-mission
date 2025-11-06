@@ -1,21 +1,21 @@
 package hello.core.order;
 
+import hello.core.annotaion.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class OrderServiceImpl implements OrderService{
    private final MemberRepository memberRepository;
    private final DiscountPolicy discountPolicy;
-  //private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); //추상에도 의존하고 구체에도 의존함 DIP 위반
- // private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); // 그리고 코드를 바꿔야함 OCP 위반
 
-
-  @Autowired
-  public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+  public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
     this.memberRepository = memberRepository;
     this.discountPolicy = discountPolicy;
   }
