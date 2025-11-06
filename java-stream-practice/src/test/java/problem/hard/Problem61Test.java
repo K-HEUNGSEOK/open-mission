@@ -15,4 +15,5 @@ public class Problem61Test {
         Map<String, Integer> expected = Map.of("apple", 5, "cherry", 12, "date", 7);
         assertEquals(expected, Problem61.extractKeyValuePairs(input));
     }
+
 }

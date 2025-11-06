@@ -12,7 +12,10 @@ public class Problem62 {
      * @return 홀수이면서 50 이상인 수 중 최대값, 없으면 0
      */
     public static int findMaxOddNumberAbove50(List<Integer> numbers) {
-        // 여기에 코드 작성
-        return 0;
+         return numbers.stream()
+                .filter(n -> n >= 50 && n % 2 != 0)
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
     }
 }

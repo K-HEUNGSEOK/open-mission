@@ -2,6 +2,7 @@ package problem.hard;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem61 {
 
@@ -13,8 +14,18 @@ public class Problem61 {
      * @param strings 문자열 리스트
      * @return 'key=value' 패턴의 문자열을 key와 정수 value로 변환한 Map
      */
+    //1. 문자열에서 = 를 찾는다
+    //2. 그걸 기준으로 spllit 으로 짜른다
+    //3. value가 숫자인지 확인하고 filter 한다.
     public static Map<String, Integer> extractKeyValuePairs(List<String> strings) {
-        // 여기에 코드 작성
-        return null;
+        return strings.stream()
+                .filter(s -> s.contains("="))
+                .map(s -> s.split("="))
+                .filter(i -> Character.isDigit(i[1].charAt(0)))
+                .collect(Collectors.toMap(
+                        key -> key[0],
+                        value -> Integer.parseInt(value[1])
+                ));
+
     }
 }
