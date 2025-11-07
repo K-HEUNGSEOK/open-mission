@@ -9,6 +9,7 @@ public class Problem64Test {
 
     @Test
     public void testSumOfFibonacciNumbers() {
-        assertEquals(19, Problem64.sumOfFibonacciNumbers(Arrays.asList(1, 2, 3, 4, 5, 6)));
+        assertEquals(11, Problem64.sumOfFibonacciNumbers(Arrays.asList(1, 2, 3, 4, 5, 6)));
     }
 }
+
