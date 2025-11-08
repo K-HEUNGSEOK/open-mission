@@ -9,6 +9,6 @@ public class Problem66Test {
 
     @Test
     public void testCountUniqueNumbers() {
-        assertEquals(4, Problem66.countUniqueNumbers(Arrays.asList(1, 2, 2, 3, 4, 4, 4, 5)));
+        assertEquals(5, Problem66.countUniqueNumbers(Arrays.asList(1, 2, 2, 3, 4, 4, 4, 5)));
     }
 }

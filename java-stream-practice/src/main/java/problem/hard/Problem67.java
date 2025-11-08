@@ -1,6 +1,7 @@
 package problem.hard;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Problem67 {
 
@@ -12,7 +13,7 @@ public class Problem67 {
      * @return 가장 긴 공통 접두사, 없으면 빈 문자열
      */
     public static String findLongestCommonPrefix(List<String> strings) {
-        // 여기에 코드 작성
-        return "";
+        //너무 고난이도 문제라 나중에 풀어보기..
+       return null;
     }
 }

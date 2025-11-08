@@ -11,7 +11,6 @@ public class Problem66 {
      * @return 중복되지 않은 숫자들의 개수
      */
     public static long countUniqueNumbers(List<Integer> numbers) {
-        // 여기에 코드 작성
-        return 0;
+       return numbers.stream().distinct().mapToInt(Integer::intValue).count();
     }
 }

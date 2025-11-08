@@ -2,6 +2,7 @@ package problem.hard;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem68 {
 
@@ -14,6 +15,30 @@ public class Problem68 {
      */
     public static Map<Integer, String> calculateFrequencyAndAverage(List<Integer> numbers) {
         // 여기에 코드 작성
-        return null;
+        double average = numbers.stream()
+                .mapToInt(Integer::intValue)
+                .average().orElse(0.0);
+
+        Map<Integer, Long> temp = numbers.stream()
+                .collect(Collectors.groupingBy(
+                        key -> key,
+                        Collectors.counting()
+                ));
+       return temp.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> String.format("Freq: %d, Avg: %.2f", entry.getValue(), average)
+                ));
+    }
+
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(1,1,2,2,3,3);
+        Map<Integer, Long> temp = numbers.stream()
+                .collect(Collectors.groupingBy(
+                        key -> key,
+                        Collectors.counting()
+                ));
+        System.out.println(temp);
     }
 }
