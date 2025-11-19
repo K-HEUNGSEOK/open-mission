@@ -17,8 +17,5 @@ public class CalculationUtils {
         return ((double) winningAmount / purchaseAmount) * 100;
     }
 
-    public static long totalRewardMoney(LottoRank lottoRank) {
-        return Integer.parseInt(lottoRank.getRewardMoney().replace(",", ""));
-    }
 
 }

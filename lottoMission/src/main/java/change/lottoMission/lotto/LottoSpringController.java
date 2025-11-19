@@ -59,7 +59,7 @@ public class LottoSpringController {
     public String lottosConfirm(Model model, HttpSession session) {
         List<Lotto> lottos = getLottos(session);
         if (lottos == null) {
-            return "redirect:/lottos/purchase";
+            return "redirect:/lottos";
         }
         model.addAttribute("lottos", lottos);
         model.addAttribute("winningForm", new WinningForm());
@@ -71,7 +71,7 @@ public class LottoSpringController {
                                       BindingResult bindingResult, Model model) {
         List<Lotto> lottos = getLottos(session);
         if (lottos == null) {
-            return "redirect:/lottos/purchase";
+            return "redirect:/lottos";
         }
 
         LottoValidator.validateBonusNumber(winningForm, bindingResult);
@@ -96,8 +96,10 @@ public class LottoSpringController {
     }
 
     @GetMapping("/result")
-    public String resultPrint() {
-
+    public String resultPrint(Model model) {
+        if (!model.containsAttribute("resultMap") || !model.containsAttribute("profitRate")){
+            return "redirect:/lottos/confirm";
+        }
         return "lottos/result";
     }
 
@@ -110,7 +112,7 @@ public class LottoSpringController {
         for (LottoRank lottoRank : lottoRanks) {
             int count = resultMap.get(lottoRank);
             if (count != 0) {
-                totalRewardMoney += CalculationUtils.totalRewardMoney(lottoRank) * count;
+                totalRewardMoney += (long) lottoRank.getRewardMoney() * count;
             }
         }
         return CalculationUtils.calculateProfitRate(purchaseMoney, totalRewardMoney);
