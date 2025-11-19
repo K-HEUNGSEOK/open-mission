@@ -4,7 +4,10 @@ import change.lottoMission.lotto.util.LottoValidator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lombok.Data;
+import org.springframework.stereotype.Component;
 
+@Data
 public class Lotto {
     private final List<Integer> numbers;
 
