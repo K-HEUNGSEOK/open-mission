@@ -2,14 +2,15 @@ package change.lottoMission.lotto.util;
 
 
 import change.lottoMission.lotto.model.LottoRank;
+import change.lottoMission.lotto.model.dto.PurchaseMoney;
 
 public class CalculationUtils {
 
     private CalculationUtils() {
     }
 
-    public static int purchaseQuantityReturn(int purchaseAmount) {
-        return purchaseAmount / 1000;
+    public static int purchaseQuantityReturn(PurchaseMoney purchaseMoney) {
+        return purchaseMoney.getMoney() / 1000;
     }
 
     public static double calculateProfitRate(int purchaseAmount, long winningAmount) {
