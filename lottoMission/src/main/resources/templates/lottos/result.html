@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>당첨 결과</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center; /* 가운데 정렬 */
+        }
+
+        h2 {
+            color: #333;
+            margin: 0 0 20px 0;
+            font-size: 24px;
+        }
+
+        /* 구분선 (--- 느낌) */
+        .divider {
+            border-bottom: 2px solid #333;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        /* 통계 리스트 영역 */
+        .stat-list {
+            text-align: left; /* 텍스트는 왼쪽 정렬 */
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 2.0; /* 줄 간격 넉넉하게 */
+            color: #444;
+        }
+
+        .stat-row {
+            border-bottom: 1px dashed #eee; /* 줄마다 옅은 구분선 */
+        }
+
+        /* 수익률 텍스트 */
+        .profit-rate {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        /* 다시하기 버튼 */
+        .restart-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 40px;
+            background-color: #339af0;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .restart-btn:hover {
+            background-color: #228be6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" th:with="R=${T(change.lottoMission.lotto.model.LottoRank)}">
+
+    <h2>당첨 통계</h2>
+    <div class="divider"></div>
+
+    <div class="stat-list">
+        <div class="stat-row"
+             th:text="|3개 일치 (5,000원) - ${resultMap[R.FIFTH]}개|">
+            3개 일치 (5,000원) - 0개
+        </div>
+
+        <div class="stat-row"
+             th:text="|4개 일치 (50,000원) - ${resultMap[R.FOURTH]}개|">
+            4개 일치 (50,000원) - 0개
+        </div>
+
+        <div class="stat-row"
+             th:text="|5개 일치 (1,500,000원) - ${resultMap[R.THIRD]}개|">
+            5개 일치 (1,500,000원) - 0개
+        </div>
+
+        <div class="stat-row"
+             th:text="|5개 일치, 보너스 볼 일치 (30,000,000원) - ${resultMap[R.SECOND]}개|">
+            5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
+        </div>
+
+        <div class="stat-row"
+             th:text="|6개 일치 (2,000,000,000원) - ${resultMap[R.FIRST]}개|">
+            6개 일치 (2,000,000,000원) - 1개
+        </div>
+    </div>
+
+    <div class="profit-rate" th:text="|총 수익률은 ${#numbers.formatDecimal(profitRate, 1, 1)}%입니다.|">
+        총 수익률은 0.0%입니다.
+    </div>
+
+    <a href="/basic/lottos" th:href="@{/lottos}" class="restart-btn">다시 구매하기</a>
+</div>
+
+</body>
+</html>

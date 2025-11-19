@@ -112,7 +112,11 @@
         .submit-btn:hover {
             background-color: #228be6;
         }
-        .error{border-color: red; color: red;}
+
+        .error {
+            border-color: red;
+            color: red;
+        }
 
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -130,7 +134,7 @@
         <div class="lotto-row" th:each="lotto : ${lottos}" th:text="|${lottoStat.count}번 ${lotto.numbers}|"></div>
     </div>
 
-    <form action="/basic/winning-lotto" th:action  th:object="${winningForm}" method="post" class="input-section">
+    <form action="/basic/winning-lotto" th:action th:object="${winningForm}" method="post" class="input-section">
         <h2>당첨 번호 입력</h2>
 
         <span class="label-text">당첨 번호 (6개)</span>

@@ -14,8 +14,8 @@ public class LottoNumberGenerator {
 
     public static List<Integer> lottoNumberReturn() {
         Set<Integer> set = new HashSet<>();
-        while (set.size() < 6){
-            set.add(new Random().nextInt(45)+1);
+        while (set.size() < 6) {
+            set.add(new Random().nextInt(45) + 1);
         }
         List<Integer> lottos = new ArrayList<>(set);
         Collections.sort(lottos);

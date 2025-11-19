@@ -68,7 +68,7 @@ public class LottoSpringController {
 
     @PostMapping("/confirm")
     public String purchaseLottosPrint(HttpSession session, @ModelAttribute @Validated WinningForm winningForm,
-                              BindingResult bindingResult, Model model) {
+                                      BindingResult bindingResult, Model model) {
         List<Lotto> lottos = getLottos(session);
         if (lottos == null) {
             return "redirect:/lottos/purchase";
@@ -95,7 +95,11 @@ public class LottoSpringController {
         return "lottos/result";
     }
 
+    @GetMapping("/result")
+    public String resultPrint() {
 
+        return "lottos/result";
+    }
 
 
     private double printStatistics(Map<LottoRank, Integer> resultMap, int purchaseMoney) {
@@ -109,7 +113,7 @@ public class LottoSpringController {
                 totalRewardMoney += CalculationUtils.totalRewardMoney(lottoRank) * count;
             }
         }
-        return CalculationUtils.calculateProfitRate(purchaseMoney,totalRewardMoney);
+        return CalculationUtils.calculateProfitRate(purchaseMoney, totalRewardMoney);
     }
 
     private static List<Lotto> getLottos(HttpSession session) {
