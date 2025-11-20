@@ -1,8 +1,9 @@
-
+package array;
 
 import java.io.FileInputStream;
-import java.util.*;
-public class Main {
+import java.util.Scanner;
+
+public class Array_6 {
     public static void main(String[] args) throws Exception {
         System.setIn(new FileInputStream("src/input.txt"));
         Scanner sc = new Scanner(System.in);
