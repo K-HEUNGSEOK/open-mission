@@ -34,14 +34,10 @@ public class LottoManager {
 
 
     int calculateMatchCount(Lotto purchasedLotto) {
-        List<Integer> winningNums = winningNumbers.getNumbers();
-        int matchCount = 0;
-        for (Integer winningNum : winningNums) {
-            if (purchasedLotto.containsNumber(winningNum)) {
-                matchCount++;
-            }
-        }
-        return matchCount;
+        return (int) winningNumbers.getNumbers()
+                .stream()
+                .filter(purchasedLotto::containsNumber)
+                .count();
     }
 
 
