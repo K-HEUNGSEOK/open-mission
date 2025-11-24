@@ -1,7 +1,23 @@
+## Learning Log (study-log)
+**Java Stream API부터 Spring MVC의 핵심 원리까지 처음부터 다시 학습하며 기록한 과정**을 담았습니다.
+본 로또 프로젝트는 이렇게 다져진 단단한 기초 위에서 구현된 결과물입니다.
+
+```text
+study-log
+├──  algo-practice            # 알고리즘 및 코딩테스트 연습 
+├──  java-stream              # Java 8 Stream API 기본 개념 학습
+├──  java-stream-practice     # Stream API 문제 풀이 
+├──  spring-basic             # 스프링 핵심 원리 - 기본편 완강
+├──  spring-mvc1              # 스프링 MVC 1편 - 백엔드 웹 개발 핵심
+├──  spring-mvc2              # 스프링 MVC 2편 - 백엔드 웹 개발 활용
+├──  item-service             # 웹 페이지 실습
+└──  message                  # 스프링 메시지, 국제화 기능 실습
+```
 # Spring MVC Lotto Game
 
-우아한 테크코스 프리코스 과제인 \*\*'로또 발매기'\*\*를 **Spring MVC** 기반의 웹 애플리케이션으로 구현한 프로젝트입니다.
-기존 콘솔 기반의 로직을 웹으로 확장하며, \*\*견고한 입력 검증(Validation)\*\*과 **객체지향적인 책임 분리**에 중점을 두어 리팩토링했습니다.
+프리코스 과제인 **'로또 발매기'**를 **Spring MVC** 기반의 웹 애플리케이션으로 구현한 프로젝트입니다.
+
+기존 콘솔 기반의 로직을 웹으로 확장하며, **오픈미션 기간 동안 집중적으로 학습했던 Spring MVC와 Java Stream API를 실제 코드에 적용**하여 구현했습니다.
 
 <br>
 
@@ -17,20 +33,24 @@
 
 <br>
 
-### 2️⃣ 당첨 번호 입력 및 결과 확인
-당첨 번호 입력 시에도 **중복 숫자**나 **보너스 번호 중복**을 실시간으로 검증하여 피드백을 제공합니다.
+### 2️⃣ 구매 내역 확인 및 당첨 번호 입력
+로또 구매 후 **자동 발급된 번호 목록**을 확인하고, 지난주 당첨 번호를 입력합니다.
+이 과정에서도 **실시간 유효성 검증(중복, 범위)**을 통해 사용자 실수를 방지합니다.
 
-| 복합 검증 (중복/범위) | 당첨 통계 결과 |
+| 구매 목록 & 입력 검증 | 당첨 통계 결과 |
 | :---: | :---: |
-| <img src="images/input_validation_error.png" width="400"> | <img src="images/result_screen.png" width="400"> |
-| *List 내부 요소 및 중복 검증* | *수익률 및 당첨 내역 출력* |
+| <img src="images/purchase_list_and_input.png" width="400"> | <img src="images/result_screen.png" width="400"> |
+| *구매 내역 확인 및 필드별 에러 검증* | *수익률 및 당첨 내역 출력* |
 
 <br>
 
-### 3️⃣ 사용자 친화적 에러 페이지
-시스템 오류나 잘못된 경로 접근 시, 화이트라벨 에러 페이지 대신 **커스텀 디자인된 에러 페이지**를 제공합니다.
+### 3️⃣ 사용자 친화적 에러 페이지 (Custom Error Pages)
+시스템 오류(500)나 잘못된 경로 접근(404) 시, 화이트라벨 에러 페이지 대신 **커스텀 디자인된 페이지**를 제공하여 사용자 경험을 개선했습니다.
 
-<img src="images/error_page_404.png" width="500">
+| 404 Not Found (잘못된 경로) | 500 Server Error (서버 오류) |
+| :---: | :---: |
+| <img src="images/error_page_404.png" width="400"> | <img src="images/error_page_500.png" width="400"> |
+
 <br>
 
 ## 📂 패키지 구조 (Package Structure)
