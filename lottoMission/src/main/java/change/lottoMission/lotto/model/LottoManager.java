@@ -1,5 +1,6 @@
 package change.lottoMission.lotto.model;
 
+import change.lottoMission.lotto.util.CalculationUtils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,17 @@ public class LottoManager {
             resultMap.put(lottoRank, resultMap.get(lottoRank) + 1);
         }
         return resultMap;
+    }
+
+    public long calculateTotalPrize(Map<LottoRank, Integer> resultMap) {
+        long totalPrize = 0;
+        for (LottoRank lottoRank : resultMap.keySet()) {
+            int count = resultMap.get(lottoRank);
+            if(count > 0){
+                totalPrize += (long)lottoRank.getRewardMoney() * count;
+            }
+        }
+        return totalPrize;
     }
 
 

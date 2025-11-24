@@ -87,8 +87,9 @@ public class LottoSpringController {
         Map<LottoRank, Integer> resultMap = lottoManager.calculateResults();
         model.addAttribute("resultMap", resultMap);
 
+        long totalPrize = lottoManager.calculateTotalPrize(resultMap);
         int purchaseMoney = lottos.size() * 1000;
-        double profitRate = printStatistics(resultMap, purchaseMoney);
+        double profitRate = CalculationUtils.calculateProfitRate(purchaseMoney,totalPrize);
         model.addAttribute("profitRate", profitRate);
 
         session.removeAttribute("lottos");
@@ -103,32 +104,11 @@ public class LottoSpringController {
         return "lottos/result";
     }
 
-
-    private double printStatistics(Map<LottoRank, Integer> resultMap, int purchaseMoney) {
-        List<LottoRank> lottoRanks = getRanksForStatistics();
-
-        long totalRewardMoney = 0;
-
-        for (LottoRank lottoRank : lottoRanks) {
-            int count = resultMap.get(lottoRank);
-            if (count != 0) {
-                totalRewardMoney += (long) lottoRank.getRewardMoney() * count;
-            }
-        }
-        return CalculationUtils.calculateProfitRate(purchaseMoney, totalRewardMoney);
-    }
-
     private static List<Lotto> getLottos(HttpSession session) {
         List<Lotto> lottos = (List<Lotto>) session.getAttribute("lottos");
         if (lottos == null || lottos.isEmpty()) {
             return null;
         }
         return lottos;
-    }
-
-    private List<LottoRank> getRanksForStatistics() {
-        List<LottoRank> ranks = new ArrayList<>(List.of(LottoRank.values()));
-        ranks.remove(LottoRank.MISS);
-        return ranks.reversed();
     }
 }
