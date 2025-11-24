@@ -23,21 +23,13 @@ public class LottoManager {
         }
 
         for (Lotto purchasedLotto : purchasedLottos) {
-            int matchCount = calculateMatchCount(purchasedLotto);
+            int matchCount = purchasedLotto.countMatch(winningNumbers);
             boolean bonusMatch = purchasedLotto.containsNumber(bonusNumber);
-            LottoRank lottoRank = LottoRank.findRank(matchCount, bonusMatch);
 
+            LottoRank lottoRank = LottoRank.findRank(matchCount, bonusMatch);
             resultMap.put(lottoRank, resultMap.get(lottoRank) + 1);
         }
         return resultMap;
-    }
-
-
-    int calculateMatchCount(Lotto purchasedLotto) {
-        return (int) winningNumbers.getNumbers()
-                .stream()
-                .filter(purchasedLotto::containsNumber)
-                .count();
     }
 
 
