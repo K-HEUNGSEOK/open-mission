@@ -89,7 +89,7 @@ public class LottoSpringController {
 
         long totalPrize = lottoManager.calculateTotalPrize(resultMap);
         int purchaseMoney = lottos.size() * 1000;
-        double profitRate = CalculationUtils.calculateProfitRate(purchaseMoney,totalPrize);
+        double profitRate = CalculationUtils.calculateProfitRate(purchaseMoney, totalPrize);
         model.addAttribute("profitRate", profitRate);
 
         session.removeAttribute("lottos");
@@ -98,7 +98,7 @@ public class LottoSpringController {
 
     @GetMapping("/result")
     public String resultPrint(Model model) {
-        if (!model.containsAttribute("resultMap") || !model.containsAttribute("profitRate")){
+        if (!model.containsAttribute("resultMap") || !model.containsAttribute("profitRate")) {
             return "redirect:/lottos/confirm";
         }
         return "lottos/result";

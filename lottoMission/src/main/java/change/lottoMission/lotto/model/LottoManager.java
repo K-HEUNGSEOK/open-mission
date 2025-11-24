@@ -37,8 +37,8 @@ public class LottoManager {
         long totalPrize = 0;
         for (LottoRank lottoRank : resultMap.keySet()) {
             int count = resultMap.get(lottoRank);
-            if(count > 0){
-                totalPrize += (long)lottoRank.getRewardMoney() * count;
+            if (count > 0) {
+                totalPrize += (long) lottoRank.getRewardMoney() * count;
             }
         }
         return totalPrize;
