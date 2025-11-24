@@ -141,6 +141,7 @@
         <div th:if="${#fields.hasGlobalErrors()}">
             <p class="error" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
         </div>
+        <div class="error" th:if="${#fields.hasErrors('numbers*')}" th:text="${#fields.errors('numbers*')[0]}"></div>
         <div class="ball-wrapper">
             <input type="number" th:field="*{numbers[0]}" class="ball-input" required>
             <input type="number" th:field="*{numbers[1]}" class="ball-input" required>
@@ -151,6 +152,7 @@
         </div>
 
         <span class="label-text">보너스 번호</span>
+        <div class="error" th:errors="*{bonusNumber}"></div>
         <div class="ball-wrapper">
             <input type="number" th:field="*{bonusNumber}" class="ball-input bonus" required>
         </div>

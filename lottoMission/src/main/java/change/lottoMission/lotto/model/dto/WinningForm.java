@@ -12,8 +12,8 @@ import org.hibernate.validator.constraints.Range;
 @Data
 public class WinningForm {
     @NotNull
-    @Size(min = 6, max =6)
-    private List<Integer> numbers;
+    @Size(min = 6, max = 6)
+    private List<@Range(min = 1, max = 45) Integer> numbers;
     @NotNull
     @Range(min = 1, max = 45)
     private Integer bonusNumber;
@@ -25,6 +25,8 @@ public class WinningForm {
 
     public WinningForm() {
         this.numbers = new ArrayList<>();
-        for(int i = 0 ; i < 6; i ++)numbers.add(null);
+        for (int i = 0; i < 6; i++) {
+            numbers.add(null);
+        }
     }
 }
